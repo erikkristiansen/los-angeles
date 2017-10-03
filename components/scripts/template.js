@@ -1,9 +1,11 @@
-var $, fill;
 
-$ = require('jquery');
+$(function() {
+  var Mustache = require('mustache');
 
-(fill = function(item) {
-  return $('.tagline').append("" + item);
-})('The most creative minds in Art');
+  $.getJSON('js/data.json', function(data) {
+    var template = $('#speakerstpl').html();
+    var html = Mustache.to_html(template, data);
+    $('#speakers').html(html);
+  }); //getJSON
 
-fill;
+}); //function
